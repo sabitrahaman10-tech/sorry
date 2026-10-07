@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sorry 🧸</title>
+<style>
+:root{--bg:#ffc2d9;--bg2:#ffa6c9;--text:#c2185b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{height:100%;margin:0}
+body{background:linear-gradient(160deg,var(--bg),var(--bg2));display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Georgia',serif;overflow:hidden}
+#sorry{font-size:clamp(34px,7vw,56px);color:var(--text);font-weight:bold;font-style:italic;min-height:1.3em;margin:0 0 10px;letter-spacing:2px}
+#sorry::after{content:"|";animation:blink .8s infinite}
+@keyframes blink{50%{opacity:0}}
+svg{width:min(200px,55vw);height:auto;animation:float 3s ease-in-out infinite}
+@keyframes drip{0%{transform:translateY(-4px);opacity:0}30%{opacity:.9}100%{transform:translateY(14px);opacity:0}}
+.tear{animation:drip 2.2s ease-in infinite}.t2{animation-delay:1.1s}
+
+#q{margin:14px 0 10px;font-size:clamp(20px,4.5vw,28px);color:var(--text);font-weight:bold;text-align:center;padding:0 12px}
+.btns{display:flex;gap:16px}
+.btns button{font-size:18px;font-weight:bold;padding:10px 30px;border:none;border-radius:30px;cursor:pointer;color:#fff;box-shadow:0 4px 10px rgba(194,24,91,.3);transition:transform .15s}
+.btns button:active{transform:scale(.93)}
+#yes{background:#e91e63}#no{background:#8e6a7a}
+.fall{position:fixed;top:-60px;pointer-events:none;z-index:10;animation:fallDown linear forwards}
+@keyframes fallDown{to{transform:translateY(115vh) rotate(var(--r,360deg))}}
+#stage{position:relative;display:flex;justify-content:center}
+#result{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.6);white-space:nowrap;font-size:clamp(44px,12vw,84px);font-weight:bold;font-style:italic;color:var(--text);opacity:0;transition:opacity .8s ease .8s,transform .8s ease .8s;z-index:5;text-align:center}
+#result.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@keyframes float{50%{transform:translateY(-8px)}}
+</style>
+</head>
+<body>
+<h1 id="sorry"></h1>
+<div id="stage"><div id="result"></div><svg viewBox="0 0 200 270" xmlns="http://www.w3.org/2000/svg">
+  <!-- legs -->
+  <ellipse cx="66" cy="238" rx="25" ry="20" fill="#a0673a"/>
+  <ellipse cx="134" cy="238" rx="25" ry="20" fill="#a0673a"/>
+  <ellipse cx="66" cy="242" rx="13" ry="10" fill="#f3c9a0"/>
+  <ellipse cx="134" cy="242" rx="13" ry="10" fill="#f3c9a0"/>
+  <!-- chubby body -->
+  <ellipse cx="100" cy="183" rx="64" ry="58" fill="#b87333"/>
+  <ellipse cx="100" cy="192" rx="42" ry="40" fill="#f3c9a0"/>
+  <!-- ears -->
+  <circle cx="55" cy="38" r="22" fill="#b87333"/><circle cx="55" cy="38" r="12" fill="#ffb3c6"/>
+  <circle cx="145" cy="38" r="22" fill="#b87333"/><circle cx="145" cy="38" r="12" fill="#ffb3c6"/>
+  <!-- big round head -->
+  <circle cx="100" cy="80" r="52" fill="#b87333"/>
+  <ellipse cx="100" cy="98" rx="23" ry="17" fill="#f3c9a0"/>
+  <!-- sad eyes -->
+  <ellipse cx="79" cy="78" rx="8.5" ry="10" fill="#222"/><ellipse cx="121" cy="78" rx="8.5" ry="10" fill="#222"/>
+  <circle cx="82" cy="74" r="3.6" fill="#fff"/><circle cx="124" cy="74" r="3.6" fill="#fff"/>
+  <circle cx="76" cy="83" r="1.8" fill="#fff"/><circle cx="118" cy="83" r="1.8" fill="#fff"/>
+  <!-- worried eyebrows -->
+  <path d="M66 60 Q76 58 90 66" stroke="#3b2314" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M134 60 Q124 58 110 66" stroke="#3b2314" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <!-- tears -->
+  <path class="tear" d="M70 90 Q64 102 70 106 Q77 102 70 90Z" fill="#8fd3ff" opacity=".9"/>
+  <path class="tear t2" d="M130 90 Q124 102 130 106 Q137 102 130 90Z" fill="#8fd3ff" opacity=".9"/>
+  <ellipse cx="100" cy="91" rx="7" ry="5" fill="#3b2314"/>
+  <!-- sad frown mouth -->
+  <path d="M100 96 V99 M90 107 Q100 98 110 107" stroke="#3b2314" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="62" cy="98" rx="10" ry="6" fill="#ff6f9c" opacity=".7"/>
+  <ellipse cx="138" cy="98" rx="10" ry="6" fill="#ff6f9c" opacity=".7"/>
+  <!-- bow -->
+  <path d="M100 133 L82 124 L82 142 Z M100 133 L118 124 L118 142 Z" fill="#e91e63"/>
+  <circle cx="100" cy="133" r="5" fill="#ad1457"/>
+  <!-- bouquet -->
+  <path d="M100 168 L80 212 L120 212 Z" fill="#ff80ab" stroke="#fff" stroke-width="2"/>
+  <g stroke="#2e7d32" stroke-width="3" stroke-linecap="round">
+    <line x1="100" y1="185" x2="84" y2="158"/><line x1="100" y1="185" x2="100" y2="152"/><line x1="100" y1="185" x2="116" y2="158"/>
+  </g>
+  <circle cx="84" cy="154" r="10" fill="#e53935"/><circle cx="84" cy="154" r="3.5" fill="#ffcdd2"/>
+  <circle cx="100" cy="147" r="11" fill="#ffd54f"/><circle cx="100" cy="147" r="3.5" fill="#f57f17"/>
+  <circle cx="116" cy="154" r="10" fill="#fff"/><circle cx="116" cy="154" r="3.5" fill="#f48fb1"/>
+  <!-- arms -->
+  <circle cx="72" cy="196" r="15" fill="#b87333"/>
+  <circle cx="128" cy="196" r="15" fill="#b87333"/>
+  <circle cx="86" cy="206" r="9" fill="#b87333"/><circle cx="114" cy="206" r="9" fill="#b87333"/>
+</svg></div>
+<div id="q">Do u forgive me? 🥺</div>
+<div class="btns"><button id="yes">Yes 💖</button><button id="no">No 😢</button></div>
+<script>
+const text="Sorry";let i=0;const el=document.getElementById('sorry');
+(function type(){ if(i<=text.length){el.textContent=text.slice(0,i++);setTimeout(type,300);} })();
+
+function rain(list,count){
+  for(let i=0;i<count;i++){
+    const e=document.createElement('div');e.className='fall';
+    e.textContent=list[Math.floor(Math.random()*list.length)];
+    e.style.left=Math.random()*96+'vw';
+    e.style.fontSize=(22+Math.random()*30)+'px';
+    e.style.setProperty('--r',(Math.random()*720-360)+'deg');
+    const d=3+Math.random()*3;
+    e.style.animationDuration=d+'s';
+    e.style.animationDelay=(Math.random()*2.5)+'s';
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),(d+2.6)*1000);
+  }
+}
+const q=document.getElementById('q');
+function go(msg,list,n){
+  document.querySelectorAll('.fall').forEach(e=>e.remove());
+  const t=document.querySelector('svg');
+  t.style.animation='none';
+  t.style.transition='transform 1.2s ease-in,opacity 1.2s ease-in';
+  t.style.transform='translateX(120vw) rotate(25deg)';
+  t.style.opacity='0';
+  const r=document.getElementById('result');r.classList.remove('show');r.textContent=msg;void r.offsetWidth;r.classList.add('show');
+  rain(list,n);
+}
+document.getElementById('yes').onclick=()=>go('Thanks 😊💖',['🎈','🎈','🎈','🌸','🌹','🌷','💐','🎉','💖','🌺'],70);
+document.getElementById('no').onclick=()=>go('Plzz sorry 🥺😭',['😢','😭','🥺','😞','💔','😿'],45);
+</script>
+</body>
+</html>
